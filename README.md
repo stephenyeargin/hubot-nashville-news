@@ -12,8 +12,6 @@ Retrieves top news from local RSS feeds.
 These sources do not have linked RSS feeds:
 - WZTZ (Fox)
 
-```
-
 ## Installation
 
 In hubot project repo, run:
