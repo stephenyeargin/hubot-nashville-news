@@ -1,7 +1,7 @@
 {
   "name": "hubot-nashville-news",
   "description": "Retrieves news from local RSS feeds.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Stephen Yeargin <stephen.yeargin@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, news, nashville",
