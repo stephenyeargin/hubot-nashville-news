@@ -69,23 +69,33 @@ module.exports = (robot) ->
 
         # Loop through each child of <item>
         $(xmlItem).children().each (i, xmlItem) ->
-          # Get the name
+          # Get the name and set the contents
           newsItem[$(this)[0].name] = $(this).text()
 
+        # Format the text or create the object
         if isSlack
-          storyList.push "> <#{newsItem.link}|#{newsItem.title}>"
+          storyList.push newsItem
         else
           storyList.push "> #{newsItem.title} - #{newsItem.link}"
 
-      # Join them together and send
-      message_body = "**#{feed.name}**\n" + storyList.join("\n")
+      # Build the payload and send
       if isSlack
-        payload =
-          text: message_body,
-          unfurl_links: false
+        payload = {
+          "text": "*#{feed.name}*",
+          "attachments": [],
+          "unfurl_links": false
+        }
+        robot.logger.debug storyList
+        _(storyList).each (attachment, i) ->
+          robot.logger.debug 'attachment', attachment
+          robot.logger.debug 'i', i
+          payload.attachments.push
+            title: attachment.title
+            title_link: attachment.link
+
         msg.send payload
       else
-        msg.send message_body
+        msg.send "**#{feed.name}**\n" + storyList.join("\n")
 
   ##
   # Gets All Feeds in a Loop
