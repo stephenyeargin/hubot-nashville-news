@@ -60,8 +60,8 @@ module.exports = (robot) ->
 
       # Loop through every item
       $('item').each (i, xmlItem) ->
-        # Peel off the top five stories
-        if i > 4
+        # Peel off the top three stories
+        if i > 2
           return
 
         # array to hold each item being converted into an array
@@ -78,13 +78,14 @@ module.exports = (robot) ->
           storyList.push "> #{newsItem.title} - #{newsItem.link}"
 
       # Join them together and send
+      message_body = "**#{feed.name}**\n" + storyList.join("\n")
       if isSlack
-        msg.send {
-          text: "**#{feed.name}**\n" + storyList.join("\n"),
+        payload =
+          text: message_body,
           unfurl_links: false
-        }
+        msg.send payload
       else
-        msg.send "**#{feed.name}**\n" + storyList.join("\n")
+        msg.send message_body
 
   ##
   # Gets All Feeds in a Loop
