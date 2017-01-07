@@ -1,4 +1,4 @@
-# hubot-nashville-news
+# Nashville News [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-news.svg?branch=master)](https://travis-ci.org/stephenyeargin/hubot-nashville-news)
 
 Retrieves top news from local RSS feeds.
 
