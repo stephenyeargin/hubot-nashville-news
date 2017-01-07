@@ -1,5 +1,5 @@
 # Description
-#   Retrieves news from local RSS feeds.
+#   Retrieves top local news from Nashville media outlet RSS feeds.
 #
 # Commands:
 #   hubot news - returns the latest Nashville news
@@ -87,8 +87,6 @@ module.exports = (robot) ->
         }
         robot.logger.debug storyList
         _(storyList).each (attachment, i) ->
-          robot.logger.debug 'attachment', attachment
-          robot.logger.debug 'i', i
           payload.attachments.push
             title: attachment.title
             title_link: attachment.link

@@ -1,16 +1,17 @@
 # Nashville News [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-news.svg?branch=master)](https://travis-ci.org/stephenyeargin/hubot-nashville-news)
 
-Retrieves top news from local RSS feeds.
+Retrieves top local news from Nashville media outlet RSS feeds.
 
-- The Nashville Scene
-- The Tennessean
-- WPLN (Nashville Public Radio)
-- WSMV (NBC)
-- WKRN (ABC)
-- WTVF (CBS)
+- [_Nashville Scene_](http://nashvillescene.com/)
+- [_The Tennessean_](http://tennessean.com/)
+- [WPLN](http://nashvillepublicradio.org/) (Nashville Public Radio)
+- [WSMV](http://www.wsmv.com/) (NBC)
+- [WKRN](http://wkrn.com/) (ABC)
+- [WTVF](http://www.newschannel5.com/) (CBS)
 
-These sources do not have linked RSS feeds:
-- WZTZ (Fox)
+These sources do not have linked RSS feeds, so they are not included:
+
+- [WZTV](http://fox17.com/) (Fox)
 
 ## Installation
 
