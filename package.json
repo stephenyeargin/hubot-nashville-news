@@ -7,10 +7,10 @@
   "keywords": "hubot, hubot-scripts, news, nashville",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-nashville-news.git"
+    "url": "git://github.com/stephenyeargin/hubot-nashville-news.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-nashville-news/issues"
+    "url": "https://github.com/stephenyeargin/hubot-nashville-news/issues"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
