@@ -29,6 +29,12 @@ Then add **hubot-nashville-news** to your `external-scripts.json`:
 
 ## Sample Interaction
 
+This is how it looks in Slack:
+
+![screen shot 2017-01-06 at 9 05 53 pm](https://cloud.githubusercontent.com/assets/80459/21738942/fef876ae-d453-11e6-97d0-4cd1156414b7.png)
+
+This is how it looks in IRC or other not-Slack clients:
+
 ```
 User> hubot news
 Hubot> Retrieving local news (this may take a bit) ...
