@@ -36,13 +36,8 @@ describe 'nashville-news', ->
 
   it 'returns the latest nashville news', (done) ->
     selfRoom = @room
-    testPromise = new Promise (resolve, reject) ->
-      selfRoom.user.say('alice', '@hubot news')
-      setTimeout(() ->
-        resolve()
-      , 200)
-
-    testPromise.then (result) ->
+    selfRoom.user.say('alice', '@hubot news')
+    setTimeout(() ->
       try
         expect(selfRoom.messages).to.eql [
           ['alice', '@hubot news']
@@ -58,3 +53,4 @@ describe 'nashville-news', ->
       catch err
         done err
       return
+    , 200)
