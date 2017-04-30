@@ -42,7 +42,7 @@ describe 'nashville-news', ->
         resolve()
       , 200)
 
-    testPromise.then ((result) ->
+    testPromise.then (result) ->
       try
         expect(selfRoom.messages).to.eql [
           ['alice', '@hubot news']
@@ -58,4 +58,3 @@ describe 'nashville-news', ->
       catch err
         done err
       return
-    ), done
