@@ -53,4 +53,4 @@ describe 'nashville-news', ->
       catch err
         done err
       return
-    , 200)
+    , 1000)
