@@ -7,44 +7,13 @@
 # Author:
 #   Stephen Yeargin <stephen.yeargin@gmail.com>
 
-# Configure the RSS feeds
-RSSFeeds = [
-  {
-    short_name: "tennessean",
-    name: "The Tennessean",
-    rss_url: "http://rssfeeds.tennessean.com/nashville/home&x=1"
-  },
-  {
-    short_name: "scene",
-    name: "Nashville Scene",
-    rss_url: "http://www.nashvillescene.com/feeds/news"
-  },
-  {
-    short_name: "wpln",
-    name: "WPLN (Nashville Public Radio)",
-    rss_url: "http://nashvillepublicradio.org/news/rss.xml"
-  },
-  {
-    short_name: "wtvf",
-    name: "WTVF (CBS)",
-    rss_url: "http://www.newschannel5.com/feeds/rssFeed?obfType=RSS_FEED&siteId=100116&categoryId=20000"
-  },
-  {
-    short_name: "wkrn",
-    name: "WKRN (ABC)",
-    rss_url: "http://wkrn.com/feed/"
-  },
-  {
-    short_name: "wkrn",
-    name: "WSMV (NBC)",
-    rss_url: "http://www.wsmv.com/category/208528/news?clienttype=rss"
-  }
-]
-
-storyCount = process.env.HUBOT_NEWS_ITEM_COUNT || 3
-
 cheerio = require 'cheerio'
 _ = require 'underscore'
+fs = require 'fs'
+
+# Configure the RSS feeds
+rssFeeds = require './feeds.json'
+storyCount = process.env.HUBOT_NEWS_ITEM_COUNT || 3
 
 module.exports = (robot) ->
   # Use enhanced formatting?
@@ -56,6 +25,8 @@ module.exports = (robot) ->
     Promise.all(promises).then (storyLists) ->
       for storyList in storyLists
         postMessage storyList, msg
+    .catch (error) ->
+      msg.send error
 
   ##
   # Gets a Single Feed
@@ -122,6 +93,6 @@ module.exports = (robot) ->
   # Gets All Feeds in a Loop
   getAllFeeds = (msg) ->
     promises = []
-    for feed, id in RSSFeeds
+    for feed, id in rssFeeds
       promises.push getFeed(feed)
     return promises

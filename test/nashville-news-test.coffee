@@ -29,6 +29,9 @@ describe 'nashville-news', ->
     nock('http://www.wsmv.com')
       .get('/category/208528/news?clienttype=rss')
       .replyWithFile(200, __dirname + '/fixtures/wsmv.xml')
+    nock('https://patch.com')
+      .get('/feeds/tennessee/nashville')
+      .replyWithFile(200, __dirname + '/fixtures/patch.xml')
 
   afterEach ->
     @room.destroy()
@@ -48,6 +51,7 @@ describe 'nashville-news', ->
           ['hubot', '**WTVF (CBS)**\n> Former Officer Charged; Allegedly Pawned Guns - http://www.newschannel5.com/news/former-waynesboro-officer-charged-for-allegedly-pawning-guns\n> Motorcycle Thieves Target Home Of Officer - http://www.newschannel5.com/news/motorcycle-thieves-target-home-of-officer\n> Nashville Farmer\'s Market To Get Parking Relief - http://www.newschannel5.com/news/nashville-farmers-market-to-get-parking-relief']
           ['hubot', '**WKRN (ABC)**\n> Construction worker shot during robbery in Edgehill - http://wkrn.com/2017/04/17/construction-worker-shot-during-robbery-in-edgehill/\n> Scattered storms lead to flash flooding in Franklin - http://wkrn.com/2017/04/17/scattered-storms-lead-to-flash-flooding-in-franklin/\n> Former Tenn. police officer accused of pawning department-issued guns - http://wkrn.com/2017/04/17/former-tenn-police-officer-accused-of-pawning-department-issued-guns/']
           ['hubot', '**WSMV (NBC)**\n> Former MTSU football player charged with animal cruelty - http://www.wsmv.com/story/35170189/former-mtsu-football-player-charged-with-animal-cruelty\n> Construction worker shot in leg in Edgehill - http://www.wsmv.com/story/35170816/construction-worker-shot-in-leg-in-edgehill\n> Former Waynesboro police officer faces theft, misconduct charges - http://www.wsmv.com/story/35170753/former-waynesboro-police-officer-faces-theft-misconduct-charges']
+          ['hubot', '**Patch Nashville**\n> Fake Predators Tickets Lead To Arrest - http://patch.com/tennessee/nashville/fake-predators-tickets-lead-arrest?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal\n> Storm-Tossed Soccer Goal Kills 2-Year-Old In Antioch - http://patch.com/tennessee/nashville/s/g3wwq/storm-tossed-soccer-goal-kills-2-year-old-antioch?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal\n> Nashville Weather Forecast: Rain Threatens All Week - http://patch.com/tennessee/nashville/nashville-weather-forecast-rain-threatens-all-week?utm_source=article-mostrecent&utm_medium=rss&utm_term=weather&utm_campaign=recirc&utm_content=normal']
         ]
         done()
       catch err
