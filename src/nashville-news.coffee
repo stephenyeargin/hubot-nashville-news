@@ -21,7 +21,7 @@ module.exports = (robot) ->
 
   robot.respond /news$/i, (msg) ->
     msg.send 'Retrieving local news (this may take a bit) ...'
-    promises = getAllFeeds(msg).reverse()
+    promises = getAllFeeds(msg)
     Promise.all(promises).then (storyLists) ->
       for storyList in storyLists
         postMessage storyList, msg
@@ -85,6 +85,9 @@ module.exports = (robot) ->
           title: attachment.title
           title_link: attachment.link
           thumb_url: if attachment['media:thumbnail'] then attachment['media:thumbnail'] else false
+
+      # Something odd causes these to be reversed
+      payload.attachments.reverse()
 
       msg.send payload
     else
