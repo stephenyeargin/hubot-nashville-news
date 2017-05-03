@@ -86,9 +86,6 @@ module.exports = (robot) ->
           title_link: attachment.link
           thumb_url: if attachment['media:thumbnail'] then attachment['media:thumbnail'] else false
 
-      # Something odd causes these to be reversed
-      payload.attachments.reverse()
-
       msg.send payload
     else
       payload = []
