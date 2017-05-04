@@ -57,6 +57,10 @@ module.exports = (robot) ->
             # Get the name and set the contents
             newsItem[$(this)[0].name] = $(this).text()
 
+          # Hack to grab the thumbnail url
+          newsItem['media:thumbnail'] = $(xmlItem).children().filter('media\\:thumbnail').attr('url')
+
+          # Attach feed item to each story item
           newsItem['feed'] = feed
 
           # Add to list
@@ -71,7 +75,7 @@ module.exports = (robot) ->
     # Build the payload and send
     if isSlack
       payload = {
-        "text": "*#{story.feed.name}*",
+        "text": "*#{storyList[0].feed.name}*",
         "attachments": [],
         "unfurl_links": false
       }
@@ -80,6 +84,7 @@ module.exports = (robot) ->
         payload.attachments.push
           title: attachment.title
           title_link: attachment.link
+          thumb_url: if attachment['media:thumbnail'] then attachment['media:thumbnail'] else false
 
       msg.send payload
     else
@@ -87,7 +92,7 @@ module.exports = (robot) ->
       for story in storyList
         payload.push "> #{story.title} - #{story.link}"
 
-      msg.send "**#{story.feed.name}**\n" + payload.join("\n")
+      msg.send "**#{storyList[0].feed.name}**\n" + payload.join("\n")
 
   ##
   # Gets All Feeds in a Loop
