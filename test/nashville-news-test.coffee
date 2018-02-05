@@ -14,7 +14,7 @@ describe 'nashville-news', ->
     nock('http://rssfeeds.tennessean.com')
       .get('/nashville/home&x=1')
       .replyWithFile(200, __dirname + '/fixtures/tennessean.xml')
-    nock('http://www.nashvillescene.com')
+    nock('https://www.nashvillescene.com')
       .get('/feeds/news')
       .replyWithFile(200, __dirname + '/fixtures/scene.xml')
     nock('http://www.newschannel5.com')
