@@ -35,7 +35,7 @@ module.exports = (robot) ->
   getFeed = (feed) ->
     return new Promise (resolve, reject) ->
       robot.http(feed.rss_url).get() (err, res, body) ->
-        if err
+        if err or res.statusCode != 200
           reject("Unable to retrieve feed for #{feed.name}. :cry:")
           return
 
