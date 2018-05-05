@@ -1,4 +1,6 @@
-# Nashville News [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-news.svg?branch=master)](https://travis-ci.org/stephenyeargin/hubot-nashville-news)
+# Nashville News
+
+[![npm version](https://badge.fury.io/js/hubot-nashville-news.svg)](http://badge.fury.io/js/hubot-nashville-news) [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-news.png)](https://travis-ci.org/stephenyeargin/hubot-nashville-news)
 
 Retrieves top local news from Nashville media outlet RSS feeds.
 

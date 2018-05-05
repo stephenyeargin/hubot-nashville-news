@@ -34,14 +34,18 @@ module.exports = (robot) ->
   # @return Promise
   getFeed = (feed) ->
     return new Promise (resolve, reject) ->
+      storyList = []
       robot.http(feed.rss_url).get() (err, res, body) ->
         if err or res.statusCode != 200
-          reject("Unable to retrieve feed for #{feed.name}. :cry:")
-          return
+          # reject("Unable to retrieve feed for #{feed.name}. :cry:")
+          storyList.push({
+            title: "Unable to retrieve news for #{feed.name} :cry:",
+            link: feed.rss_url,
+            feed: feed
+          })
+          return resolve(storyList)
 
         $ = cheerio.load(body, { ignoreWhitespace : true, xmlMode : true})
-
-        storyList = []
 
         # Loop through every item
         $('item').each (i, xmlItem) ->
