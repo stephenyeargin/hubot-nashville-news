@@ -12,26 +12,21 @@
   {
     "short_name": "wpln",
     "name": "WPLN (Nashville Public Radio)",
-    "rss_url": "http://nashvillepublicradio.org/news/rss.xml"
+    "rss_url": "https://wpln.org/feed/"
   },
   {
     "short_name": "wtvf",
     "name": "WTVF (CBS)",
-    "rss_url": "http://www.newschannel5.com/feeds/rssFeed?obfType=RSS_FEED&siteId=100116&categoryId=20000"
+    "rss_url": "https://www.newschannel5.com/news/local-news.rss"
   },
   {
     "short_name": "wkrn",
     "name": "WKRN (ABC)",
-    "rss_url": "http://wkrn.com/feed/"
+    "rss_url": "https://www.wkrn.com/feed/"
   },
   {
     "short_name": "wkrn",
     "name": "WSMV (NBC)",
-    "rss_url": "http://www.wsmv.com/category/208528/news?clienttype=rss"
-  },
-  {
-    "short_name": "patch",
-    "name": "Patch Nashville",
-    "rss_url": "https://patch.com/feeds/tennessee/nashville"
+    "rss_url": "https://www.wsmv.com/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc"
   }
 ]
