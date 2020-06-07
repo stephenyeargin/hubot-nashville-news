@@ -14,24 +14,21 @@ describe 'nashville-news slack', ->
     @room = helper.createRoom()
     nock.disableNetConnect()
 
-    nock('http://rssfeeds.tennessean.com')
+    nock('https://rssfeeds.tennessean.com')
       .get('/nashville/home&x=1')
       .replyWithFile(200, __dirname + '/fixtures/tennessean.xml')
-    nock('http://www.newschannel5.com')
-      .get('/feeds/rssFeed?obfType=RSS_FEED&siteId=100116&categoryId=20000')
+    nock('https://www.newschannel5.com')
+      .get('/news/local-news.rss')
       .replyWithFile(200, __dirname + '/fixtures/wtvf.xml')
-    nock('http://nashvillepublicradio.org')
-      .get('/news/rss.xml')
+    nock('https://wpln.org')
+      .get('/feed/')
       .replyWithFile(200, __dirname + '/fixtures/wpln.xml')
-    nock('http://wkrn.com/')
+    nock('https://www.wkrn.com/')
       .get('/feed/')
       .replyWithFile(200, __dirname + '/fixtures/wkrn.xml')
-    nock('http://www.wsmv.com')
-      .get('/category/208528/news?clienttype=rss')
+    nock('https://www.wsmv.com')
+      .get('/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc')
       .replyWithFile(200, __dirname + '/fixtures/wsmv.xml')
-    nock('https://patch.com')
-      .get('/feeds/tennessee/nashville')
-      .replyWithFile(200, __dirname + '/fixtures/patch.xml')
 
   afterEach ->
     @room.destroy()
@@ -192,30 +189,6 @@ describe 'nashville-news slack', ->
               "text": "*WSMV (NBC)*",
               "unfurl_links": false
             }
-          ],
-          [
-            'hubot',
-            {
-              "attachments": [
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170501/095007/styles/T600x450/public/article_images/nashville-predator-logo-1493646374-3454.jpg",
-                  "title": "Fake Predators Tickets Lead To Arrest",
-                  "title_link": "http://patch.com/tennessee/nashville/fake-predators-tickets-lead-arrest?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal"
-                }
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170430/083357/styles/T600x450/public/article_images/police_lights_shutterstock_108854663-1493598639-4317.jpg",
-                  "title": "Storm-Tossed Soccer Goal Kills 2-Year-Old In Antioch",
-                  "title_link": "http://patch.com/tennessee/nashville/s/g3wwq/storm-tossed-soccer-goal-kills-2-year-old-antioch?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal"
-                }
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170430/121159/styles/T600x450/public/article_images/week-ahead-weather_rain_1200x900-1493568707-5595.jpg",
-                  "title": "Nashville Weather Forecast: Rain Threatens All Week",
-                  "title_link": "http://patch.com/tennessee/nashville/nashville-weather-forecast-rain-threatens-all-week?utm_source=article-mostrecent&utm_medium=rss&utm_term=weather&utm_campaign=recirc&utm_content=normal"
-                }
-              ],
-              "text": "*Patch Nashville*",
-              "unfurl_links": false
-            }
           ]
         ]
         done()
@@ -367,30 +340,6 @@ describe 'nashville-news slack', ->
                 }
               ],
               "text": "*WSMV (NBC)*",
-              "unfurl_links": false
-            }
-          ],
-          [
-            'hubot',
-            {
-              "attachments": [
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170501/095007/styles/T600x450/public/article_images/nashville-predator-logo-1493646374-3454.jpg",
-                  "title": "Fake Predators Tickets Lead To Arrest",
-                  "title_link": "http://patch.com/tennessee/nashville/fake-predators-tickets-lead-arrest?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal"
-                }
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170430/083357/styles/T600x450/public/article_images/police_lights_shutterstock_108854663-1493598639-4317.jpg",
-                  "title": "Storm-Tossed Soccer Goal Kills 2-Year-Old In Antioch",
-                  "title_link": "http://patch.com/tennessee/nashville/s/g3wwq/storm-tossed-soccer-goal-kills-2-year-old-antioch?utm_source=article-mostrecent&utm_medium=rss&utm_term=police%20%26%20fire&utm_campaign=recirc&utm_content=normal"
-                }
-                {
-                  "thumb_url": "https://cdn20.patch.com/users/22893192/20170430/121159/styles/T600x450/public/article_images/week-ahead-weather_rain_1200x900-1493568707-5595.jpg",
-                  "title": "Nashville Weather Forecast: Rain Threatens All Week",
-                  "title_link": "http://patch.com/tennessee/nashville/nashville-weather-forecast-rain-threatens-all-week?utm_source=article-mostrecent&utm_medium=rss&utm_term=weather&utm_campaign=recirc&utm_content=normal"
-                }
-              ],
-              "text": "*Patch Nashville*",
               "unfurl_links": false
             }
           ]

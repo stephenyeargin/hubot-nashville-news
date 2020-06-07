@@ -2,7 +2,7 @@
   {
     "short_name": "tennessean",
     "name": "The Tennessean",
-    "rss_url": "http://rssfeeds.tennessean.com/nashville/home&x=1"
+    "rss_url": "https://rssfeeds.tennessean.com/nashville/home&x=1"
   },
   {
     "short_name": "scene",
@@ -25,7 +25,7 @@
     "rss_url": "https://www.wkrn.com/feed/"
   },
   {
-    "short_name": "wkrn",
+    "short_name": "wsmv",
     "name": "WSMV (NBC)",
     "rss_url": "https://www.wsmv.com/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc"
   }
