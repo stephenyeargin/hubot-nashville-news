@@ -1,6 +1,6 @@
 # Nashville News
 
-[![npm version](https://badge.fury.io/js/hubot-nashville-news.svg)](http://badge.fury.io/js/hubot-nashville-news) [![Build Status](https://app.travis-ci.com/stephenyeargin/hubot-nashville-news.png)](https://app.travis-ci.com/stephenyeargin/hubot-nashville-news)
+[![npm version](https://badge.fury.io/js/hubot-nashville-news.svg)](http://badge.fury.io/js/hubot-nashville-news) [![Node CI](https://github.com/stephenyeargin/hubot-nashville-news/actions/workflows/nodejs.yml/badge.svg)](https://github.com/stephenyeargin/hubot-nashville-news/actions/workflows/nodejs.yml)
 
 Retrieves top local news from Nashville media outlet RSS feeds.
 
