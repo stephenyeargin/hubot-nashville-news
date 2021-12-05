@@ -7,7 +7,7 @@
   {
     "short_name": "scene",
     "name": "Nashville Scene",
-    "rss_url": "https://www.nashvillescene.com/feeds/news"
+    "rss_url": "https://www.nashvillescene.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc"
   },
   {
     "short_name": "wpln",

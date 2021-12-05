@@ -35,8 +35,9 @@ describe 'nashville-news slack', ->
     nock.cleanAll()
 
   it 'returns the latest nashville news', (done) ->
+    # Scoped here to allow for 404 test
     nock('https://www.nashvillescene.com')
-      .get('/feeds/news')
+      .get('/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc')
       .replyWithFile(200, __dirname + '/fixtures/scene.xml')
 
     selfRoom = @room
@@ -199,7 +200,7 @@ describe 'nashville-news slack', ->
 
   it 'returns an error when one of the sources fails.', (done) ->
     nock('https://www.nashvillescene.com')
-      .get('/feeds/news')
+      .get('/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc')
       .reply(404)
 
     selfRoom = @room
@@ -240,7 +241,7 @@ describe 'nashville-news slack', ->
                 {
                   "thumb_url": false,
                   "title": "Unable to retrieve news for Nashville Scene :cry:",
-                  "title_link": "https://www.nashvillescene.com/feeds/news"
+                  "title_link": "https://www.nashvillescene.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc"
                 }
               ],
               "text": "*Nashville Scene*",
