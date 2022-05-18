@@ -37,7 +37,6 @@ module.exports = (robot) ->
       storyList = []
       robot.http(feed.rss_url).get() (err, res, body) ->
         if err or res.statusCode != 200
-          # reject("Unable to retrieve feed for #{feed.name}. :cry:")
           storyList.push({
             title: "Unable to retrieve news for #{feed.name} :cry:",
             link: feed.rss_url,
@@ -46,6 +45,15 @@ module.exports = (robot) ->
           return resolve(storyList)
 
         $ = cheerio.load(body, { ignoreWhitespace : true, xmlMode : true})
+
+        # Empty or invalid RSS feed
+        if $('item').length == 0
+          storyList.push({
+            title: "Unable to retrieve news for #{feed.name} :cry:",
+            link: feed.rss_url,
+            feed: feed
+          })
+          return resolve(storyList)
 
         # Loop through every item
         $('item').each (i, xmlItem) ->

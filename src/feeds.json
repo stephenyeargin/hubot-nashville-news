@@ -23,10 +23,5 @@
     "short_name": "wkrn",
     "name": "WKRN (ABC)",
     "rss_url": "https://www.wkrn.com/feed/"
-  },
-  {
-    "short_name": "wsmv",
-    "name": "WSMV (NBC)",
-    "rss_url": "https://www.wsmv.com/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc"
   }
 ]

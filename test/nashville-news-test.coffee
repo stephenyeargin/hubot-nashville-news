@@ -23,9 +23,6 @@ describe 'nashville-news', ->
     nock('https://www.wkrn.com/')
       .get('/feed/')
       .replyWithFile(200, __dirname + '/fixtures/wkrn.xml')
-    nock('https://www.wsmv.com')
-      .get('/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc')
-      .replyWithFile(200, __dirname + '/fixtures/wsmv.xml')
 
   afterEach ->
     @room.destroy()
@@ -49,7 +46,6 @@ describe 'nashville-news', ->
           ['hubot', '**WPLN (Nashville Public Radio)**\n> After Protests And Arrests, Tennessee Activists Still Press Governor For Medicaid Expansion - http://nashvillepublicradio.org/post/after-protests-and-arrests-tennessee-activists-still-press-governor-medicaid-expansion\n> Capitol Hill Conversation: Open Container Ban And Other Bills That Quietly Fizzled - http://nashvillepublicradio.org/post/capitol-hill-conversation-open-container-ban-and-other-bills-quietly-fizzled\n> How Sen. Alexander\'s Health Insurance Bill Could Benefit One Organization In Tennessee  - http://nashvillepublicradio.org/post/how-sen-alexanders-health-insurance-bill-could-benefit-one-organization-tennessee']
           ['hubot', '**WTVF (CBS)**\n> Former Officer Charged; Allegedly Pawned Guns - http://www.newschannel5.com/news/former-waynesboro-officer-charged-for-allegedly-pawning-guns\n> Motorcycle Thieves Target Home Of Officer - http://www.newschannel5.com/news/motorcycle-thieves-target-home-of-officer\n> Nashville Farmer\'s Market To Get Parking Relief - http://www.newschannel5.com/news/nashville-farmers-market-to-get-parking-relief']
           ['hubot', '**WKRN (ABC)**\n> Construction worker shot during robbery in Edgehill - http://wkrn.com/2017/04/17/construction-worker-shot-during-robbery-in-edgehill/\n> Scattered storms lead to flash flooding in Franklin - http://wkrn.com/2017/04/17/scattered-storms-lead-to-flash-flooding-in-franklin/\n> Former Tenn. police officer accused of pawning department-issued guns - http://wkrn.com/2017/04/17/former-tenn-police-officer-accused-of-pawning-department-issued-guns/']
-          ['hubot', '**WSMV (NBC)**\n> Former MTSU football player charged with animal cruelty - http://www.wsmv.com/story/35170189/former-mtsu-football-player-charged-with-animal-cruelty\n> Construction worker shot in leg in Edgehill - http://www.wsmv.com/story/35170816/construction-worker-shot-in-leg-in-edgehill\n> Former Waynesboro police officer faces theft, misconduct charges - http://www.wsmv.com/story/35170753/former-waynesboro-police-officer-faces-theft-misconduct-charges']
         ]
         done()
       catch err
@@ -74,7 +70,6 @@ describe 'nashville-news', ->
           ['hubot', '**WPLN (Nashville Public Radio)**\n> After Protests And Arrests, Tennessee Activists Still Press Governor For Medicaid Expansion - http://nashvillepublicradio.org/post/after-protests-and-arrests-tennessee-activists-still-press-governor-medicaid-expansion\n> Capitol Hill Conversation: Open Container Ban And Other Bills That Quietly Fizzled - http://nashvillepublicradio.org/post/capitol-hill-conversation-open-container-ban-and-other-bills-quietly-fizzled\n> How Sen. Alexander\'s Health Insurance Bill Could Benefit One Organization In Tennessee  - http://nashvillepublicradio.org/post/how-sen-alexanders-health-insurance-bill-could-benefit-one-organization-tennessee']
           ['hubot', '**WTVF (CBS)**\n> Former Officer Charged; Allegedly Pawned Guns - http://www.newschannel5.com/news/former-waynesboro-officer-charged-for-allegedly-pawning-guns\n> Motorcycle Thieves Target Home Of Officer - http://www.newschannel5.com/news/motorcycle-thieves-target-home-of-officer\n> Nashville Farmer\'s Market To Get Parking Relief - http://www.newschannel5.com/news/nashville-farmers-market-to-get-parking-relief']
           ['hubot', '**WKRN (ABC)**\n> Construction worker shot during robbery in Edgehill - http://wkrn.com/2017/04/17/construction-worker-shot-during-robbery-in-edgehill/\n> Scattered storms lead to flash flooding in Franklin - http://wkrn.com/2017/04/17/scattered-storms-lead-to-flash-flooding-in-franklin/\n> Former Tenn. police officer accused of pawning department-issued guns - http://wkrn.com/2017/04/17/former-tenn-police-officer-accused-of-pawning-department-issued-guns/']
-          ['hubot', '**WSMV (NBC)**\n> Former MTSU football player charged with animal cruelty - http://www.wsmv.com/story/35170189/former-mtsu-football-player-charged-with-animal-cruelty\n> Construction worker shot in leg in Edgehill - http://www.wsmv.com/story/35170816/construction-worker-shot-in-leg-in-edgehill\n> Former Waynesboro police officer faces theft, misconduct charges - http://www.wsmv.com/story/35170753/former-waynesboro-police-officer-faces-theft-misconduct-charges']
         ]
         done()
       catch err

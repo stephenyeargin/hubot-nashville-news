@@ -26,9 +26,6 @@ describe 'nashville-news slack', ->
     nock('https://www.wkrn.com/')
       .get('/feed/')
       .replyWithFile(200, __dirname + '/fixtures/wkrn.xml')
-    nock('https://www.wsmv.com')
-      .get('/search/?f=rss&t=article&c=news/davidson_county&l=50&s=start_time&sd=desc')
-      .replyWithFile(200, __dirname + '/fixtures/wsmv.xml')
 
   afterEach ->
     @room.destroy()
@@ -166,30 +163,6 @@ describe 'nashville-news slack', ->
               "text": "*WKRN (ABC)*",
               "unfurl_links": false
             }
-          ],
-          [
-            "hubot",
-            {
-              "attachments": [
-                {
-                  "thumb_url": false,
-                  "title": "Former MTSU football player charged with animal cruelty",
-                  "title_link": "http://www.wsmv.com/story/35170189/former-mtsu-football-player-charged-with-animal-cruelty"
-                },
-                {
-                  "thumb_url": false,
-                  "title": "Construction worker shot in leg in Edgehill",
-                  "title_link": "http://www.wsmv.com/story/35170816/construction-worker-shot-in-leg-in-edgehill"
-                },
-                {
-                  "thumb_url": false,
-                  "title": "Former Waynesboro police officer faces theft, misconduct charges",
-                  "title_link": "http://www.wsmv.com/story/35170753/former-waynesboro-police-officer-faces-theft-misconduct-charges"
-                }
-              ],
-              "text": "*WSMV (NBC)*",
-              "unfurl_links": false
-            }
           ]
         ]
         done()
@@ -317,30 +290,6 @@ describe 'nashville-news slack', ->
                 }
               ]
               "text": "*WKRN (ABC)*",
-              "unfurl_links": false
-            }
-          ],
-          [
-            "hubot",
-            {
-              "attachments": [
-                {
-                  "thumb_url": false,
-                  "title": "Former MTSU football player charged with animal cruelty",
-                  "title_link": "http://www.wsmv.com/story/35170189/former-mtsu-football-player-charged-with-animal-cruelty"
-                },
-                {
-                  "thumb_url": false,
-                  "title": "Construction worker shot in leg in Edgehill",
-                  "title_link": "http://www.wsmv.com/story/35170816/construction-worker-shot-in-leg-in-edgehill"
-                },
-                {
-                  "thumb_url": false,
-                  "title": "Former Waynesboro police officer faces theft, misconduct charges",
-                  "title_link": "http://www.wsmv.com/story/35170753/former-waynesboro-police-officer-faces-theft-misconduct-charges"
-                }
-              ],
-              "text": "*WSMV (NBC)*",
               "unfurl_links": false
             }
           ]
