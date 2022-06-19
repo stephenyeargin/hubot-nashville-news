@@ -11,7 +11,7 @@ describe 'nashville-news', ->
     @room = helper.createRoom()
     nock.disableNetConnect()
 
-    nock('https://rssfeeds.tennessean.com')
+    nock('http://rssfeeds.tennessean.com')
       .get('/nashville/home&x=1')
       .replyWithFile(200, __dirname + '/fixtures/tennessean.xml')
     nock('https://www.newschannel5.com')
