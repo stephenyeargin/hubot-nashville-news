@@ -14,7 +14,7 @@
     "url": "https://github.com/stephenyeargin/hubot-nashville-news/issues"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.11",
+    "cheerio": "^1.0.0-rc.12",
     "underscore": "^1.13.4"
   },
   "peerDependencies": {
@@ -26,8 +26,8 @@
     "hubot-test-helper": "^1.9.0",
     "husky": "^8.0.1",
     "mocha": "^10.0.0",
-    "nock": "^13.2.7",
-    "release-it": "^15.0.0",
+    "nock": "^13.2.9",
+    "release-it": "^15.2.0",
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0"
   },
