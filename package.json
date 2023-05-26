@@ -18,7 +18,7 @@
     "underscore": "^1.13.6"
   },
   "peerDependencies": {
-    "hubot": "^3"
+    "hubot": "^3 || ^4"
   },
   "devDependencies": {
     "chai": "^4.3.7",
