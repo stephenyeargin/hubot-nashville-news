@@ -17,7 +17,7 @@ const storyCount = process.env.HUBOT_NEWS_ITEM_COUNT || 3;
 
 module.exports = (robot) => {
   // Use enhanced formatting?
-  const isSlack = robot.adapterName === 'slack';
+  const isSlack = /slack/i.test(robot.adapterName);
 
   // Gets a Single Feed
   const getFeed = (feed) => new Promise((resolve) => {
