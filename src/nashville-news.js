@@ -20,11 +20,17 @@ module.exports = (robot) => {
   const isSlack = /slack/i.test(robot.adapterName);
 
   // Gets a Single Feed
-  const getFeed = (feed) => new Promise((resolve) => {
-    const storyList = [];
+  const getFeed = (feed) => new Promise((resolve, reject) => {
     robot.http(feed.rss_url)
       .get()((err, res, body) => {
-        if (err || (res.statusCode !== 200)) {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const storyList = [];
+
+        if (res.statusCode !== 200) {
           storyList.push({
             title: `Unable to retrieve news for ${feed.name} :cry:`,
             link: feed.rss_url,
@@ -44,6 +50,7 @@ module.exports = (robot) => {
             feed,
           });
           resolve(storyList);
+          return;
         }
 
         // Loop through every item
@@ -105,24 +112,37 @@ module.exports = (robot) => {
     msg.send(`**${storyList[0].feed.name}**\n${payload.join('\n')}`);
   };
 
-  // Gets All Feeds in a Loop
-  const getAllFeeds = () => {
-    const promises = [];
-    rssFeeds.forEach((feed) => {
-      promises.push(getFeed(feed));
+  // Sets or clears the Slack assistant "thinking" status for the thread
+  const setThreadStatus = async (msg, status) => {
+    await robot?.adapter?.client?.web?.assistant?.threads?.setStatus({
+      channel_id: msg.message.room,
+      thread_ts: msg.message.thread_ts || msg.message.id,
+      status,
     });
-    return promises;
   };
 
-  robot.respond(/news$/i, (msg) => {
-    msg.send('Retrieving local news (this may take a bit) ...');
-    const promises = getAllFeeds(msg);
-    Promise.all(promises)
-      .then((storyLists) => {
-        storyLists.forEach((storyList) => {
-          postMessage(storyList, msg);
-        });
-      })
-      .catch((error) => msg.send(error));
+  robot.respond(/news$/i, async (msg) => {
+    if (!isSlack) {
+      msg.send('Retrieving local news (this may take a bit) ...');
+    }
+
+    try {
+      const storyLists = await Promise.all(rssFeeds.map(async (feed) => {
+        if (isSlack) {
+          await setThreadStatus(msg, `Retrieving ${feed.name} feed`);
+        }
+        return getFeed(feed);
+      }));
+
+      storyLists.forEach((storyList) => {
+        postMessage(storyList, msg);
+      });
+    } catch (error) {
+      msg.send(error);
+    } finally {
+      if (isSlack) {
+        await setThreadStatus(msg, '');
+      }
+    }
   });
 };

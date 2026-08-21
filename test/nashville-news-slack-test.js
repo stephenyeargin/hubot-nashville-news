@@ -9,9 +9,9 @@ const { createTestBot } = require('./common/TestBot');
 const FIXTURES = path.resolve(__dirname, 'fixtures');
 
 function setupCommonNocks() {
-  nock('http://rssfeeds.tennessean.com')
-    .get('/nashville/home&x=1')
-    .replyWithFile(200, `${FIXTURES}/tennessean.xml`);
+  nock('https://nashvillebanner.com')
+    .get('/feed/')
+    .replyWithFile(200, `${FIXTURES}/nashvillebanner.xml`);
   nock('https://www.newschannel5.com')
     .get('/news/local-news.rss')
     .replyWithFile(200, `${FIXTURES}/wtvf.xml`);
@@ -44,31 +44,29 @@ describe('nashville-news slack', () => {
     await ctx.send('@hubot news');
     await new Promise((done) => { setTimeout(done, 200); });
 
-    assert.equal(ctx.sends[0], 'Retrieving local news (this may take a bit) ...');
-
-    assert.deepEqual(ctx.sends[1], {
-      text: '*The Tennessean*',
+    assert.deepEqual(ctx.sends[0], {
+      text: '*The Nashville Banner*',
       unfurl_links: false,
       attachments: [
         {
           thumb_url: false,
-          title: "Predators' secret weapon vs. Blackhawks? Harry Zolnierczyk",
-          title_link: 'http://rssfeeds.tennessean.com/~/294030934/0/nashville/home~Predators-secret-weapon-vs-Blackhawks-Harry-Zolnierczyk/',
+          title: 'Aug. 20: Metro Arts Commission Director; a Gun at East High School',
+          title_link: 'https://nashvillebanner.com/2026/08/20/metro-arts-east-high-school-interstate-24/',
         },
         {
           thumb_url: false,
-          title: 'Watch: Flash flooding, storms leave car stranded in Franklin',
-          title_link: 'http://rssfeeds.tennessean.com/~/294034568/0/nashville/home~Watch-Flash-flooding-storms-leave-car-stranded-in-Franklin/',
+          title: 'Across Nashville Neighborhoods, Parked Waymos Are Recording You',
+          title_link: 'https://nashvillebanner.com/2026/08/20/waymo-autonomous-vehicles-surveillance-data-retention/',
         },
         {
           thumb_url: false,
-          title: 'Haslam laments failure of undocumented immigrant tuition bill',
-          title_link: 'http://rssfeeds.tennessean.com/~/294014088/0/nashville/home~Haslam-laments-failure-of-undocumented-immigrant-tuition-bill/',
+          title: 'Aug. 19: Vanderbilt Provost Gets a New Job; Restore Our Fairgrounds Coalition Rallies Support',
+          title_link: 'https://nashvillebanner.com/2026/08/19/vanderbilt-university-provost-fairgrounds-speedway-fight/',
         },
       ],
     });
 
-    assert.deepEqual(ctx.sends[2], {
+    assert.deepEqual(ctx.sends[1], {
       text: '*Nashville Scene*',
       unfurl_links: false,
       attachments: [
@@ -90,7 +88,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[3], {
+    assert.deepEqual(ctx.sends[2], {
       text: '*WPLN (Nashville Public Radio)*',
       unfurl_links: false,
       attachments: [
@@ -112,7 +110,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[4], {
+    assert.deepEqual(ctx.sends[3], {
       text: '*WTVF (CBS)*',
       unfurl_links: false,
       attachments: [
@@ -134,7 +132,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[5], {
+    assert.deepEqual(ctx.sends[4], {
       text: '*WKRN (ABC)*',
       unfurl_links: false,
       attachments: [
@@ -167,31 +165,29 @@ describe('nashville-news slack', () => {
     await ctx.send('@hubot news');
     await new Promise((done) => { setTimeout(done, 200); });
 
-    assert.equal(ctx.sends[0], 'Retrieving local news (this may take a bit) ...');
-
-    assert.deepEqual(ctx.sends[1], {
-      text: '*The Tennessean*',
+    assert.deepEqual(ctx.sends[0], {
+      text: '*The Nashville Banner*',
       unfurl_links: false,
       attachments: [
         {
           thumb_url: false,
-          title: "Predators' secret weapon vs. Blackhawks? Harry Zolnierczyk",
-          title_link: 'http://rssfeeds.tennessean.com/~/294030934/0/nashville/home~Predators-secret-weapon-vs-Blackhawks-Harry-Zolnierczyk/',
+          title: 'Aug. 20: Metro Arts Commission Director; a Gun at East High School',
+          title_link: 'https://nashvillebanner.com/2026/08/20/metro-arts-east-high-school-interstate-24/',
         },
         {
           thumb_url: false,
-          title: 'Watch: Flash flooding, storms leave car stranded in Franklin',
-          title_link: 'http://rssfeeds.tennessean.com/~/294034568/0/nashville/home~Watch-Flash-flooding-storms-leave-car-stranded-in-Franklin/',
+          title: 'Across Nashville Neighborhoods, Parked Waymos Are Recording You',
+          title_link: 'https://nashvillebanner.com/2026/08/20/waymo-autonomous-vehicles-surveillance-data-retention/',
         },
         {
           thumb_url: false,
-          title: 'Haslam laments failure of undocumented immigrant tuition bill',
-          title_link: 'http://rssfeeds.tennessean.com/~/294014088/0/nashville/home~Haslam-laments-failure-of-undocumented-immigrant-tuition-bill/',
+          title: 'Aug. 19: Vanderbilt Provost Gets a New Job; Restore Our Fairgrounds Coalition Rallies Support',
+          title_link: 'https://nashvillebanner.com/2026/08/19/vanderbilt-university-provost-fairgrounds-speedway-fight/',
         },
       ],
     });
 
-    assert.deepEqual(ctx.sends[2], {
+    assert.deepEqual(ctx.sends[1], {
       text: '*Nashville Scene*',
       unfurl_links: false,
       attachments: [
@@ -203,7 +199,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[3], {
+    assert.deepEqual(ctx.sends[2], {
       text: '*WPLN (Nashville Public Radio)*',
       unfurl_links: false,
       attachments: [
@@ -225,7 +221,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[4], {
+    assert.deepEqual(ctx.sends[3], {
       text: '*WTVF (CBS)*',
       unfurl_links: false,
       attachments: [
@@ -247,7 +243,7 @@ describe('nashville-news slack', () => {
       ],
     });
 
-    assert.deepEqual(ctx.sends[5], {
+    assert.deepEqual(ctx.sends[4], {
       text: '*WKRN (ABC)*',
       unfurl_links: false,
       attachments: [

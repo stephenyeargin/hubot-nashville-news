@@ -1,8 +1,8 @@
 [
   {
-    "short_name": "tennessean",
-    "name": "The Tennessean",
-    "rss_url": "http://rssfeeds.tennessean.com/nashville/home&x=1"
+    "short_name": "banner",
+    "name": "The Nashville Banner",
+    "rss_url": "https://nashvillebanner.com/feed/"
   },
   {
     "short_name": "scene",
